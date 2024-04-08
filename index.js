@@ -26,7 +26,7 @@ app.post("/zoo", (req, res) => {
     [req.body.name, req.body.type, req.body.weight, req.body.live_in_zoo],
     function (error, result) {
       if (error) throw error;
-      res.json({ result });
+      res.json({ message: "ok" });
     }
   );
 });

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CreateAnimal = () => {
+const CreateAnimal = (setCreate) => {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [weight, setWeight] = useState("");
@@ -8,6 +8,9 @@ const CreateAnimal = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    setCreate({ name, type, weight, livesInZoo });
+    console.log(name, type, weight, livesInZoo);
 
     setName("");
     setType("");
