@@ -33,12 +33,12 @@ app.post("/zoo", (req, res) => {
 
 // GET
 
-app.get("/zoo", (req, res) => {
+app.get("/zoo/all", (req, res) => {
   const sqlQuery = `SELECT id, name, type, weight, liveInZoo FROM zoo_museum`;
 
   connectDB.query(sqlQuery, function (error, result) {
     if (error) throw error;
-    res.json({ result });
+    res.json(result);
   });
 });
 
@@ -47,20 +47,10 @@ app.get("/zoo", (req, res) => {
 app.delete("/zoo/:id", (req, res) => {
   const sqlQuery = `DELETE FROM zoo_museum WHERE id=?`;
 
-  connectDB.query(
-    sqlQuery,
-    [
-      req.body.name,
-      req.body.type,
-      req.body.weight,
-      req.body.liveInZoo,
-      req.params.id,
-    ],
-    function (error, result) {
-      if (error) throw error;
-      res.json({ result });
-    }
-  );
+  connectDB.query(sqlQuery, [req.params.id], function (error, result) {
+    if (error) throw error;
+    res.json(result);
+  });
 });
 
 // UPDATE
@@ -79,7 +69,7 @@ app.put("/zoo/:id", (req, res) => {
     ],
     function (error, result) {
       if (error) throw error;
-      res.json({ result });
+      res.json(result);
     }
   );
 });

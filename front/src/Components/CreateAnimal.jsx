@@ -21,7 +21,7 @@ const CreateAnimal = ({ setCreate }) => {
   return (
     <div>
       <h1>Create animal record</h1>
-      <form onSubmit={handleFormSubmit}>
+      <form className="animals" onSubmit={handleFormSubmit}>
         <label>Animal name</label>
         <input
           type="text"
