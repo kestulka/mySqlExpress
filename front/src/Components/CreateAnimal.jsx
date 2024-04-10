@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 
-const CreateAnimal = (setCreate) => {
+const CreateAnimal = ({ setCreate }) => {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [weight, setWeight] = useState("");
-  const [livesInZoo, setLivesInZoo] = useState("");
+  const [livesInZoo, setLivesInZoo] = useState(0);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    setCreate({ name, type, weight, livesInZoo });
+    setCreate({ name, type, weight, liveInZoo: livesInZoo }); // DATABASE TABLE ROW NAME: "liveInZoo"
     console.log(name, type, weight, livesInZoo);
 
     setName("");
     setType("");
     setWeight("");
-    setLivesInZoo("");
+    setLivesInZoo(0);
   };
 
   return (
     <div>
       <h1>Create animal record</h1>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <label>Animal name</label>
         <input
           type="text"
@@ -47,7 +47,7 @@ const CreateAnimal = (setCreate) => {
           onChange={() => setLivesInZoo((doLive) => (doLive ? 0 : 1))}
         />
 
-        <button onChange={handleFormSubmit}>Create </button>
+        <button type="submit">Create </button>
       </form>
     </div>
   );
