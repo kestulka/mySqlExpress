@@ -1,16 +1,65 @@
-import React from "react";
-import Animal from "./Animal";
+import React, { useState } from "react";
+import { useEffect } from "react";
 
-const EditAnimal = ({ animal }) => {
+const EditAnimal = ({ setShow, showData, setEdit }) => {
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [weight, setWeight] = useState("");
+  const [liveInZoo, setLivesInZoo] = useState(0);
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+
+    setEdit({ name, type, weight, liveInZoo, id: showData.id });
+
+    console.log(name, type, weight, liveInZoo, showData.id);
+
+    setName("");
+    setType("");
+    setWeight("");
+    setLivesInZoo(0);
+    setShow(0);
+  };
+
+  useEffect(() => {
+    setName(showData.name);
+    setType(showData.type);
+    setWeight(showData.weight);
+    setLivesInZoo(showData.liveInZoo);
+  }, [showData]);
+
   return (
     <div>
-      <Animal
-        id={animal.id}
-        name={animal.name}
-        type={animal.weight}
-        weight={animal.weight}
-        inZoo={animal.liveInZoo}
-      />
+      <h1>Edit animal record</h1>
+
+      <form onSubmit={handleSubmitForm}>
+        <label>Animal name</label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <label>Animal type</label>
+        <input
+          type="text"
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+        />
+        <label>Animal weight</label>
+        <input
+          type="number"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+        />
+        <label>Does animal live in zoo</label>
+        <input
+          type="checkbox"
+          checked={liveInZoo}
+          onChange={() => setLivesInZoo((doLive) => (doLive ? 0 : 1))}
+        />
+
+        <button type="submit">create</button>
+      </form>
     </div>
   );
 };
