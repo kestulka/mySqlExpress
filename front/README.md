@@ -1,8 +1,74 @@
-# React + Vite
+# Module 1 (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+cd front
+npm install
 
-Currently, two official plugins are available:
+# Module 2 (Backend)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+in root
+npm install
+
+# Usage:
+
+# Front
+
+cd frontend
+npm run dev
+
+# Back
+
+in root
+npm start
+
+# Scripts:
+
+dev: Starts the development server using Vite.
+build: Builds the production-ready code using Vite.
+lint: Lints the code using ESLint.
+preview: Previews the production build using Vite.
+
+# **POSTMAN TESTING CRUD GUIDE**
+
+## Create animal record
+
+- **Endpoint:** `http://localhost:3000/zoo`
+- **Method:** `POST`
+- **Description:** `Creates a new animal record`
+- **Request Body:** `Include the following fields:`
+
+```json
+{
+  "animal_name": "Example Animal",
+  "animal_type": "Example Type",
+  "animal_weight": 123,
+  "live_in_zoo": true
+}
+```
+
+## Get all animal records
+
+- **Endpoint:** `http://localhost:3000/zoo/all`
+- **Method:** `GET`
+- **Description:** Retrieves all animal records
+
+## Update animal by id
+
+- **Endpoint:** `http://localhost:3000/zoo/${edit.id}`
+- **Method:** `PUT`
+- **Description:** Updates an existing animal record
+- **Request Body:** `Include the following fields:`
+
+```json
+{
+  "animal_name": "Example Animal",
+  "animal_type": "Example Type",
+  "animal_weight": 321,
+  "live_in_zoo": false
+}
+```
+
+## Delete animal by id
+
+- **Endpoint:** `http://localhost:3000/zoo/${id}`
+- **Method:** `DELETE`
+- **Description:** Deletes an existing animal record
