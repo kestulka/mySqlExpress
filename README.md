@@ -10,12 +10,12 @@
 
 # Usage:
 
-# Front
+Front
 
 - **Location: ** `cd front`
 - **Command: ** `npm run dev`
 
-# Back
+Back
 
 - **Location: ** `root`
 - **Command: ** `npm start`
