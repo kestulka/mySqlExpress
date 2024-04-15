@@ -1,18 +1,31 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 
 const EditAnimal = ({ setShow, showData, setEdit }) => {
-  const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [weight, setWeight] = useState("");
-  const [liveInZoo, setLivesInZoo] = useState(0);
+  const [animal_name, setName] = useState("");
+  const [animal_type, setType] = useState("");
+  const [animal_weight, setWeight] = useState("");
+  const [live_in_zoo, setLivesInZoo] = useState(0);
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    setEdit({ name, type, weight, liveInZoo, id: showData.id });
+    setEdit({
+      animal_name,
+      animal_type,
+      animal_weight,
+      live_in_zoo,
+      id: showData.id,
+    });
 
-    console.log(name, type, weight, liveInZoo, showData.id);
+    console.log(
+      animal_name,
+      animal_type,
+      animal_weight,
+      live_in_zoo,
+      showData.id,
+    );
 
     setName("");
     setType("");
@@ -29,38 +42,39 @@ const EditAnimal = ({ setShow, showData, setEdit }) => {
   }, [showData]);
 
   return (
-    <div>
+    <Box>
       <h1>Edit animal record</h1>
 
       <form onSubmit={handleSubmitForm}>
-        <label>Animal name</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label>Animal type</label>
-        <input
-          type="text"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-        />
-        <label>Animal weight</label>
-        <input
-          type="number"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-        />
-        <label>Does animal live in zoo</label>
-        <input
-          type="checkbox"
-          checked={liveInZoo}
-          onChange={() => setLivesInZoo((doLive) => (doLive ? 0 : 1))}
-        />
-
-        <button type="submit">create</button>
+        <FormControl>
+          <FormLabel>Animal name</FormLabel>
+          <Input
+            type="text"
+            value={animal_name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <FormLabel>Animal type</FormLabel>
+          <Input
+            type="text"
+            value={animal_type}
+            onChange={(e) => setType(e.target.value)}
+          />
+          <FormLabel>Animal weight</FormLabel>
+          <Input
+            type="number"
+            value={animal_weight}
+            onChange={(e) => setWeight(e.target.value)}
+          />
+          <FormLabel>Does animal live in zoo</FormLabel>
+          <Input
+            type="checkbox"
+            checked={live_in_zoo}
+            onChange={() => setLivesInZoo((doLive) => (doLive ? 0 : 1))}
+          />
+        </FormControl>
+        <Button type="submit">create</Button>
       </form>
-    </div>
+    </Box>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { ChakraProvider } from "@chakra-ui/react";
 import AnimalsList from "./Components/AnimalsList";
 import CreateAnimal from "./Components/CreateAnimal";
 import axios from "axios";
@@ -36,22 +37,6 @@ function App() {
     axios
       .post("http://localhost:3000/zoo", create)
       .then((res) => setUpdateTime(Date.now()));
-
-    // fetch("http://localhost:3003/zoo", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(create),
-    // })
-    //   .then((res) => {
-    //     if (!res.ok) {
-    //       throw new Error("Network response failed");
-    //     }
-    //     return res.json();
-    //   })
-    //   .then(() => setUpdateTime(Date.now()))
-    //   .catch((error) => console.log(error));
   }, [create]);
 
   // __________________________________________________________________________
@@ -60,10 +45,6 @@ function App() {
     axios
       .get("http://localhost:3000/zoo/all")
       .then((res) => setAnimalList(res.data));
-    // .then(
-    //   (res) => setAnimalList(res.data.sort((a, b) => a.weight - b.weight))
-    // setAnimalList(res.data.sort((a, b) => (a.type > b.type ? 1 : -1)))
-    // );
   }, [updateTime]);
 
   // __________________________________________________________________________

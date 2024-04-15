@@ -20,21 +20,26 @@ const connectDB = mysql.createConnection({
 // POST
 
 app.post("/zoo", (req, res) => {
-  const sqlQuery = `INSERT INTO zoo_museum(name, type, weight, liveInZoo) VALUES(?, ?, ?, ?)`;
+  const sqlQuery = `INSERT INTO zoo_museum(animal_name, animal_type, animal_weight, live_in_zoo) VALUES(?, ?, ?, ?)`;
   connectDB.query(
     sqlQuery,
-    [req.body.name, req.body.type, req.body.weight, req.body.liveInZoo],
+    [
+      req.body.animal_name,
+      req.body.animal_type,
+      req.body.animal_weight,
+      req.body.live_in_zoo,
+    ],
     function (error, result) {
       if (error) throw error;
       res.json({ message: "ok" });
-    }
+    },
   );
 });
 
 // GET
 
 app.get("/zoo/all", (req, res) => {
-  const sqlQuery = `SELECT id, name, type, weight, liveInZoo FROM zoo_museum`;
+  const sqlQuery = `SELECT id, animal_name, animal_type, animal_weight, live_in_zoo FROM zoo_museum`;
 
   connectDB.query(sqlQuery, function (error, result) {
     if (error) throw error;
@@ -56,21 +61,21 @@ app.delete("/zoo/:id", (req, res) => {
 // UPDATE
 
 app.put("/zoo/:id", (req, res) => {
-  const sqlQuery = `UPDATE zoo_museum SET name=?, type=?, weight=?, liveInZoo=? WHERE id=?`;
+  const sqlQuery = `UPDATE zoo_museum SET animal_name=?, animal_type=?, animal_weight=?, live_in_zoo=? WHERE id=?`;
 
   connectDB.query(
     sqlQuery,
     [
-      req.body.name,
-      req.body.type,
-      req.body.weight,
+      req.body.animal_name,
+      req.body.animal_type,
+      req.body.animal_weight,
       req.body.live_in_zoo,
       req.params.id,
     ],
     function (error, result) {
       if (error) throw error;
       res.json(result);
-    }
+    },
   );
 });
 

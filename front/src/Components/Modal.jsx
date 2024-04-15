@@ -1,17 +1,18 @@
 import React from "react";
 import EditAnimal from "./EditAnimal";
+import { Box, Text, Button } from "@chakra-ui/react";
 
 const Modal = ({ id, setShow, showData, setEdit }) => {
   return id === 0 ? null : (
-    <div>
-      <div>
-        <p>
+    <Box>
+      <Box>
+        <Text>
           Editing animal with id: <b>{id}</b>
-        </p>
-        <button onClick={() => setShow(0)}>X</button>
-      </div>
+        </Text>
+        <Button onClick={() => setShow(0)}>X</Button>
+      </Box>
       <EditAnimal setShow={setShow} showData={showData()} setEdit={setEdit} />
-    </div>
+    </Box>
   );
 };
 

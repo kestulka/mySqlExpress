@@ -1,10 +1,11 @@
 import React from "react";
 import Animal from "./Animal";
+import { Box } from "@chakra-ui/react";
 
 const AnimalsList = ({ animalList, handleDelete, setShow }) => {
   // console.log(animalList);
   return (
-    <div>
+    <Box>
       {animalList.length > 0 &&
         animalList.map((animal) => (
           <Animal
@@ -14,7 +15,7 @@ const AnimalsList = ({ animalList, handleDelete, setShow }) => {
             setShow={setShow}
           />
         ))}
-    </div>
+    </Box>
   );
 };
 

@@ -1,30 +1,40 @@
 import React from "react";
+import {
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  Text,
+  Box,
+  Button,
+} from "@chakra-ui/react";
 
 const Animal = ({ animal, handleDelete, setShow }) => {
-  const { id, name, type, weight, liveInZoo } = animal;
+  const { id, animal_name, animal_type, animal_weight, live_in_zoo } = animal;
 
   return (
-    <li>
-      <span>
+    <ListItem>
+      <Text>
         id: <b>{id}</b>
-      </span>
-      <span>
-        name: <b>{name}</b>
-      </span>
-      <span>
-        type: <b>{type}</b>
-      </span>
-      <span>
-        weight: <b>{weight}</b>
-      </span>
-      <span>
-        is in zoo?: <b>{liveInZoo}</b> (0 - false / 1 - true)
-      </span>
-      <div>
-        <button onClick={() => setShow(id)}>Edit</button>
-        <button onClick={() => handleDelete(id)}>Delete</button>
-      </div>
-    </li>
+      </Text>
+      <Text>
+        name: <b>{animal_name}</b>
+      </Text>
+      <Text>
+        type: <b>{animal_type}</b>
+      </Text>
+      <Text>
+        weight: <b>{animal_weight}</b>
+      </Text>
+      <Text>
+        is in zoo?: <b>{live_in_zoo}</b> (0 - false / 1 - true)
+      </Text>
+      <Box>
+        <Button onClick={() => setShow(id)}>Edit</Button>
+        <Button onClick={() => handleDelete(id)}>Delete</Button>
+      </Box>
+    </ListItem>
   );
 };
 
