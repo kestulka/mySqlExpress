@@ -1,31 +1,24 @@
 # Module 1 (Frontend)
 
-cd front
-npm install
+- **Location: ** `cd front`
+- **Command: ** `npm install`
 
 # Module 2 (Backend)
 
-in root
-npm install
+- **Location: ** `root`
+- **Command: ** `npm install`
 
 # Usage:
 
 # Front
 
-cd frontend
-npm run dev
+- **Location: ** `cd front`
+- **Command: ** `npm run dev`
 
 # Back
 
-in root
-npm start
-
-# Scripts:
-
-dev: Starts the development server using Vite.
-build: Builds the production-ready code using Vite.
-lint: Lints the code using ESLint.
-preview: Previews the production build using Vite.
+- **Location: ** `root`
+- **Command: ** `npm start`
 
 # **POSTMAN TESTING CRUD GUIDE**
 
