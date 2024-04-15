@@ -41,18 +41,21 @@ const CreateAnimal = ({ setCreate }) => {
           <FormControl>
             <FormLabel textAlign="center">Animal name:</FormLabel>
             <Input
+              h="1.5rem"
               type="text"
               value={animal_name}
               onChange={(e) => setName(e.target.value)}
             />
             <FormLabel textAlign="center">Animal type:</FormLabel>
             <Input
+              h="1.5rem"
               type="text"
               value={animal_type}
               onChange={(e) => setType(e.target.value)}
             />
             <FormLabel textAlign="center">Animal weight:</FormLabel>
             <Input
+              h="1.5rem"
               type="number"
               value={animal_weight}
               onChange={(e) => setWeight(e.target.value)}
@@ -62,6 +65,7 @@ const CreateAnimal = ({ setCreate }) => {
               type="checkbox"
               checked={live_in_zoo}
               onChange={() => setLivesInZoo((doLive) => (doLive ? 0 : 1))}
+              className="checkbox-custom"
             />
             <Divider></Divider>
             <Button type="submit">Create </Button>

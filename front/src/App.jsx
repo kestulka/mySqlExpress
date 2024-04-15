@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import { Link, Box, Icon, Flex } from "@chakra-ui/react";
+import { FaGithub } from "react-icons/fa";
 import AnimalsList from "./Components/AnimalsList";
 import CreateAnimal from "./Components/CreateAnimal";
 import axios from "axios";
 import Modal from "./Components/Modal";
 import SortingComponent from "./Components/SortingComponenet";
+import { sortAnimals } from "./Functions/sorting";
 
 function App() {
   const [create, setCreate] = useState(null);
@@ -63,45 +66,7 @@ function App() {
   // __________________________________________________________________________
 
   const sortHandler = (value) => {
-    const copy = [...animalList];
-
-    switch (value) {
-      case "a-z":
-        setAnimalList(copy.sort((a, b) => a.weight - b.weight));
-        break;
-      case "z-a":
-        setAnimalList(copy.sort((a, b) => b.weight - a.weight));
-        break;
-      case "name_a-z":
-        setAnimalList((animals) => {
-          animals.sort((a, b) => {
-            if (a.name > b.name) {
-              return 1;
-            }
-            if (a.name < b.name) {
-              return -1;
-            }
-            return 0;
-          });
-          return [...animals];
-        });
-        break;
-      case "name_z-a":
-        setAnimalList((animals) => {
-          animals.sort((a, b) => {
-            if (a.name > b.name) {
-              return -1;
-            }
-            if (a.name < b.name) {
-              return 1;
-            }
-            return 0;
-          });
-          return [...animals];
-        });
-        break;
-      default:
-    }
+    setAnimalList(sortAnimals(animalList, value));
   };
 
   return (
@@ -119,6 +84,19 @@ function App() {
         showData={showData}
         setEdit={setEdit}
       />
+
+      <Box mt={80}>
+        <Flex alignItems="center">
+          <Icon as={FaGithub} boxSize={28} mr={8} />
+          <Link
+            color="teal.500"
+            href="https://github.com/kestulka/mySqlExpress"
+            textDecoration="underline"
+          >
+            Project Repository
+          </Link>
+        </Flex>
+      </Box>
     </div>
   );
 }

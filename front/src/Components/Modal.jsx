@@ -4,12 +4,11 @@ import { Box, Text, Button } from "@chakra-ui/react";
 
 const Modal = ({ id, setShow, showData, setEdit }) => {
   return id === 0 ? null : (
-    <Box>
+    <Box boxShadow="0px 0px 10px rgba(255, 255, 255, 1)">
       <Box>
-        <Text>
-          Editing animal with id: <b>{id}</b>
-        </Text>
-        <Button onClick={() => setShow(0)}>X</Button>
+        <Button onClick={() => setShow(0)} mt={8}>
+          Cancel Editing
+        </Button>
       </Box>
       <EditAnimal setShow={setShow} showData={showData()} setEdit={setEdit} />
     </Box>

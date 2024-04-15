@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Heading,
+} from "@chakra-ui/react";
 
 const EditAnimal = ({ setShow, showData, setEdit }) => {
   const [animal_name, setName] = useState("");
@@ -43,36 +50,39 @@ const EditAnimal = ({ setShow, showData, setEdit }) => {
 
   return (
     <Box>
-      <h1>Edit animal record</h1>
+      <Heading m={8}>Editing animal record with an id: "{showData.id}"</Heading>
 
       <form onSubmit={handleSubmitForm}>
         <FormControl>
-          <FormLabel>Animal name</FormLabel>
+          <FormLabel textAlign="center">Animal name</FormLabel>
           <Input
             type="text"
             value={animal_name}
             onChange={(e) => setName(e.target.value)}
           />
-          <FormLabel>Animal type</FormLabel>
+          <FormLabel textAlign="center">Animal type</FormLabel>
           <Input
             type="text"
             value={animal_type}
             onChange={(e) => setType(e.target.value)}
           />
-          <FormLabel>Animal weight</FormLabel>
+          <FormLabel textAlign="center">Animal weight</FormLabel>
           <Input
             type="number"
             value={animal_weight}
             onChange={(e) => setWeight(e.target.value)}
           />
-          <FormLabel>Does animal live in zoo</FormLabel>
+          <FormLabel textAlign="center">Is in zoo?</FormLabel>
           <Input
             type="checkbox"
             checked={live_in_zoo}
             onChange={() => setLivesInZoo((doLive) => (doLive ? 0 : 1))}
+            className="checkbox-custom"
           />
         </FormControl>
-        <Button type="submit">create</Button>
+        <Button type="submit" mb={8} mt={8}>
+          Update
+        </Button>
       </form>
     </Box>
   );
